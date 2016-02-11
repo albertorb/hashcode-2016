@@ -66,3 +66,10 @@ class TestControlCloudTrailActiveInAllRegions(TestCase):
         equals, score = score_image_with_commands(image_original, list_commands)
         self.assertTrue(equals)
         self.assertEqual(score, 17)
+
+    def test_score_image_10(self):
+        image = [[False for __ in xrange(50)] for _ in xrange(80)]
+        list_commands = []
+        equals, score = score_image_with_commands(image, list_commands)
+        self.assertTrue(equals)
+        self.assertEqual(score, 8000)

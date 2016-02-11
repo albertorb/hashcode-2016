@@ -5,8 +5,8 @@ def create_image_with_commands(list_commands, len_i, len_j):
         if command[0] == 0:
             if new_image[command[1]][command[2]] is True:
                 new_image[command[1]][command[2]] = False
-            else:
-                raise Exception("Eraser when it is False")
+            # else:
+            #     raise Exception("Eraser when it is False")
 
         # square
         elif command[0] == 1:
