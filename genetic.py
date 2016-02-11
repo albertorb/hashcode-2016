@@ -33,20 +33,25 @@ class GeneticAlgorithm:
         commands = []
         for _ in range(random.randint(0,100)):
             random_op = random.randint(0,2)
-            random_col = random.randint(0,self.COLS)
-            random_row = random.randint(0,self.ROWS)
-            individual = (random_op, random_col, random_row)
+            random_col = random.randint(0,self.COLS - 1)
+            random_row = random.randint(0,self.ROWS - 1)
+            individual = (random_op, random_row, random_col)
             if random_op == 1:
-                max_values = [int(self.ROWS/(random_row + 1)), int(self.COLS/(random_col + 1))]
-                square_size = random.randint(0, min(max_values))
+                aux_row = self.ROWS - random_row
+                aux_col = self.COLS - random_col
+                max_size = min(random_col, random_row, aux_col, aux_row) - 1
+                if max_size > 0:
+                    square_size = random.randint(0, max_size)
+                else:
+                    square_size = 0
                 individual += (square_size, )
             if random_op == 2:
                 vertical_horizontal_prob = random.randint(0,100)
                 if vertical_horizontal_prob < 50:
-                    random_row2 = random.randint(0, self.ROWS)
+                    random_row2 = random.randint(0, self.ROWS-1)
                     random_col2 = int(random_col)
                 else:
-                    random_col2 = random.randint(0, self.COLS)
+                    random_col2 = random.randint(0, self.COLS-1)
                     random_row2 = int(random_row)
                 individual += (random_row2, random_col2, )
             commands.append(individual)

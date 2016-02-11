@@ -1,7 +1,10 @@
 def create_image_with_commands(list_commands, len_i, len_j):
+    print(len_i)
+    print len_j
     new_image = [[False for j in xrange(len_j)] for i in xrange(len_i)]
     for command in list_commands:
         # eraser
+        print(command)
         if command[0] == 0:
             if new_image[command[1]][command[2]] is True:
                 new_image[command[1]][command[2]] = False
